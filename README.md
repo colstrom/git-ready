@@ -7,6 +7,11 @@ Installation
 
 `gem install git-ready`
 
+OSX Installation Issues?
+------------------------
+
+One of the gems used by git-ready ([Rugged](https://github.com/libgit2/rugged)), requires `cmake` to build. On OSX, this isn't installed by default, but can easily be resolved with `brew install cmake`.
+
 Usage
 -----
 
