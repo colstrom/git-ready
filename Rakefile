@@ -17,10 +17,14 @@ Jeweler::Tasks.new do |gem|
   gem.name = 'git-ready'
   gem.homepage = 'http://github.com/colstrom/git-ready'
   gem.license = 'MIT'
-  gem.summary = %(TODO: one-line summary of your gem)
-  gem.description = %(TODO: longer description of your gem)
+  gem.summary = %(git-ready gets you read to work with an established team that already uses GitHub.)
+  gem.description = %(git-ready gets you read to work with an established team that already uses GitHub.)
   gem.email = 'chris@olstrom.com'
   gem.authors = ['Chris Olstrom']
+  gem.files         = `git ls-files`.split("\n")
+  gem.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
+  gem.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
+  gem.require_paths = ['lib']
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
