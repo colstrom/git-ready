@@ -12,7 +12,7 @@ module GitHub
       api.org_repos(organization, type: type)
     end
     progress = ProgressBar.new repositories.length
-    repositories.first(2).flat_map do |repository|
+    repositories.flat_map do |repository|
       progress.increment!
       { upstream: repository, origin: api.fork(repository[:full_name]) }
     end
