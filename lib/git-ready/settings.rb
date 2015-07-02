@@ -11,7 +11,7 @@ class Settings < Settingslogic
   config_paths = %w(/etc /usr/local/etc ~/.config .)
 
   config_paths.each do |config_path|
-    config_file = File.expand_path "#{ config_path }/git-ready.yaml"
+    config_file = File.expand_path "#{config_path}/git-ready.yaml"
     source config_file if File.exist? config_file
   end
 
