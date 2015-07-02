@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = 'git-ready'
   gem.homepage = 'http://github.com/colstrom/git-ready'
   gem.license = 'MIT'
-  gem.summary = %(git-ready gets you read to work with an established team that already uses GitHub.)
-  gem.description = %(git-ready gets you read to work with an established team that already uses GitHub.)
+  gem.summary = %(git-ready gets you ready to work with an established team that already uses GitHub.)
+  gem.description = %(git-ready gets you ready to work with an established team that already uses GitHub.)
   gem.email = 'chris@olstrom.com'
   gem.authors = ['Chris Olstrom']
   gem.files         = `git ls-files`.split("\n")
