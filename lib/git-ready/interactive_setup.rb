@@ -56,13 +56,21 @@ module InteractiveSetup
     end
 
     def self.guided_generation
-      login = ask 'Enter your GitHub login:'
-      password = ask('Enter your GitHub password:') { |c| c.echo = '*' }
-      generate login, password
+      generate ask_login, ask_password
     rescue Octokit::OneTimePasswordRequired
       Announce.info 'Your account has 2-Factor Authentication enabled. Awesome!'
       headers = { 'X-GitHub-OTP' => ask('Enter a valid 2-Factor Auth Token') }
       generate login, password, headers
+    end
+
+    def self.ask_login
+      login = ask('Enter your GitHub login:')
+      login.empty? ? ask_login : login
+    end
+
+    def self.ask_password
+      password = ask('Enter your GitHub password:') { |c| c.echo = '*' }
+      password.empty? ? ask_password : password
     end
 
     def self.generate(login, password, headers = {}, first_attempt = true)
