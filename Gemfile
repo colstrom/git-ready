@@ -1,5 +1,12 @@
 source 'https://rubygems.org'
 
+gem 'contracts'
+gem 'octokit'
+gem 'progress_bar'
+gem 'rugged', '~> 0.23.0b4'
+gem 'settingslogic'
+gem 'terminal-announce'
+
 group :development do
   gem "rspec", "~> 3.2"
   gem "yard", "~> 0.7"
