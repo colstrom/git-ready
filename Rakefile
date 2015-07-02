@@ -6,7 +6,7 @@ begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e
   $stderr.puts e.message
-  $stderr.puts "Run `bundle install` to install missing gems"
+  $stderr.puts 'Run `bundle install` to install missing gems'
   exit e.status_code
 end
 require 'rake'
@@ -14,13 +14,13 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
-  gem.name = "git-ready"
-  gem.homepage = "http://github.com/colstrom/git-ready"
-  gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "chris@olstrom.com"
-  gem.authors = ["Chris Olstrom"]
+  gem.name = 'git-ready'
+  gem.homepage = 'http://github.com/colstrom/git-ready'
+  gem.license = 'MIT'
+  gem.summary = %(TODO: one-line summary of your gem)
+  gem.description = %(TODO: longer description of your gem)
+  gem.email = 'chris@olstrom.com'
+  gem.authors = ['Chris Olstrom']
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
@@ -31,9 +31,9 @@ RSpec::Core::RakeTask.new(:spec) do |spec|
   spec.pattern = FileList['spec/**/*_spec.rb']
 end
 
-desc "Code coverage detail"
+desc 'Code coverage detail'
 task :simplecov do
-  ENV['COVERAGE'] = "true"
+  ENV['COVERAGE'] = 'true'
   Rake::Task['spec'].execute
 end
 
@@ -50,7 +50,7 @@ RoodiTask.new do |t|
   t.verbose = false
 end
 
-task :default => :spec
+task default: :spec
 
 require 'yard'
 YARD::Rake::YardocTask.new
