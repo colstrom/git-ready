@@ -52,7 +52,7 @@ module InteractiveSetup
       Announce.info 'If you leave this blank, git-ready will do most of the work for you. As a fallback, you can generate your own at https://github.com/settings/tokens/new'
       token = ask 'Enter your GitHub Personal Access Token:', String
       token = guided_generation[:token] if token.empty?
-      token if works? token
+      token_works?(token) ? token : setup
     end
 
     def self.guided_generation
@@ -101,7 +101,7 @@ module InteractiveSetup
       end
     end
 
-    def self.works?(token)
+    def self.token_works?(token)
       github = Octokit::Client.new access_token: token
       true if github.repos
     rescue Octokit::Unauthorized
