@@ -3,7 +3,6 @@ require 'highline/import'
 require 'octokit'
 require 'terminal-announce'
 require 'yaml'
-require 'pry'
 
 module InteractiveSetup
   include Contracts
