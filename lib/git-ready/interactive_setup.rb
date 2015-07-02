@@ -14,6 +14,7 @@ module InteractiveSetup
     settings['workspace'] = Workspace.setup
     settings['github_access_token'] = GitHubAccessToken.setup
     save settings if validate settings
+    exit
   end
 
   def self.validate(settings)
