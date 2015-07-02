@@ -51,7 +51,8 @@ module InteractiveSetup
     def self.setup
       Announce.info 'If you leave this blank, git-ready will do most of the work for you. As a fallback, you can generate your own at https://github.com/settings/tokens/new'
       token = ask 'Enter your GitHub Personal Access Token:', String
-      token = guided_generation[:token] if token.empty?
+      generated = guided_generation if token.empty?
+      token = generated[:token] if generated
       token_works?(token) ? token : setup
     end
 
