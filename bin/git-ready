@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+require 'git-ready'
+require 'terminal-announce'
+
+if ARGV.empty? || %w(-h --help help).include?(ARGV.first)
+  Announce.failure 'Missing an organization to git-ready with.' if ARGV.empty?
+  Announce.info 'Syntax: git-ready <organization>'
+  abort
+end
+
+organization = ARGV.first
+username = GitHub.api.user[:login]
+
+Announce.info "Forking all #{organization} repositories to #{username}"
+repositories = GitHub.fork_all organization
+
+Announce.info "Cloning all forked repositories into #{Settings.workspace}"
+Workspace.setup repositories
