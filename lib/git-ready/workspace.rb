@@ -22,13 +22,14 @@ module Workspace
   def self.clone(url, path)
     credentials = Rugged::Credentials::SshKeyFromAgent.new username: 'git'
     Rugged::Repository.clone_at(url, path, credentials: credentials) unless git_repository? path
+  rescue Rugged::NetworkError
+    Announce.failure "Failed to clone repository #{url} to path #{path}"
   end
 
   Contract ArrayOf[Hash] => Any
   def self.setup(repositories)
     progress = ProgressBar.new repositories.length
     repositories.each do |repo|
-      # binding.pry
       path = "#{Settings.workspace}/#{repo[:origin][:name]}"
       clone repo[:origin][:ssh_url], path
       configure_remotes path, repo[:origin][:ssh_url], repo[:upstream][:ssh_url]
