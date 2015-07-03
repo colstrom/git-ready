@@ -57,7 +57,9 @@ module InteractiveSetup
     end
 
     def self.guided_generation
-      generate ask_login, ask_password
+      login = ask_login
+      password = ask_password
+      generate login, password
     rescue Octokit::OneTimePasswordRequired
       Announce.info 'Your account has 2-Factor Authentication enabled. Awesome!'
       headers = { 'X-GitHub-OTP' => ask('Enter a valid 2-Factor Auth Token') }
