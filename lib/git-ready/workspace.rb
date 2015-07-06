@@ -16,6 +16,8 @@ module Workspace
     repository = Rugged::Repository.new path
     repository.remotes.set_url 'origin', origin_url
     repository.remotes.set_url 'upstream', upstream_url
+  rescue Rugged::RepositoryError
+    Announce.failure "Failed to configure remotes #{origin_url} and #{upstream_url} for #{path}"
   end
 
   Contract String, String => Any
