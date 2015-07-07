@@ -30,7 +30,7 @@ module InteractiveSetup
   def self.save(settings)
     config_path = File.expand_path '~/.config'
     Dir.mkdir config_path unless Dir.exist? config_path
-    File.write "#{config_path}/config.yaml", YAML.dump(settings)
+    File.write "#{config_path}/git-ready.yaml", YAML.dump(settings)
     Announce.success "Configuration saved to #{config_path}"
   end
 
