@@ -8,9 +8,7 @@ module GitHub
 
   Contract String => ArrayOf[({ upstream: Sawyer::Resource, origin: Sawyer::Resource })]
   def self.fork_all(organization)
-    repositories = %w(public, private).flat_map do |type|
-      api.org_repos(organization, type: type)
-    end
+    repositories = api.org_repos organization
     progress = ProgressBar.new repositories.length
     repositories.flat_map do |repository|
       progress.increment!
