@@ -4,7 +4,6 @@ require 'git-ready'
 require 'terminal-announce'
 
 if ARGV.empty? || %w(-h --help help).include?(ARGV.first)
-  Announce.failure 'Missing an organization to git-ready with.' if ARGV.empty?
   Announce.info 'Syntax: git-ready <organization>'
   abort
 end
