@@ -18,7 +18,7 @@ module GitHub
     end
   end
 
-  Contract nil => Octokit::Client
+  Contract None => Octokit::Client
   def self.api
     @api ||= Octokit::Client.new access_token: Settings.github_access_token, auto_paginate: true
   end
