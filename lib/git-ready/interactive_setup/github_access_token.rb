@@ -63,7 +63,7 @@ module InteractiveSetup
       session.delete_authorization existing, headers: headers
     end
 
-    Contract String Octokit::Client, Hash => Any
+    Contract String, Octokit::Client, Hash => Any
     def self.old_auth_tokens(note, session, headers)
       session.authorizations(headers: headers).select do |auth|
         auth[:note] == note
