@@ -18,6 +18,8 @@ module Workspace
     repository.remotes.set_url 'upstream', upstream_url
   rescue Rugged::RepositoryError
     Announce.failure "Failed to configure remotes #{origin_url} and #{upstream_url} for #{path}"
+  rescue Rugged::OSError
+    Announce.warning "#{path} does not exist"
   end
 
   Contract String, String => Any
