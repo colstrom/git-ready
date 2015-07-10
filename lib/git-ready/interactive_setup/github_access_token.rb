@@ -40,7 +40,7 @@ module InteractiveSetup
     end
 
     Contract String, String, Hash, Bool => Hash
-    def self.generate(login, password, headers = {}, first_attempt = true)
+    def self.generate(login, password, headers = {}, first_attempt: true)
       github = Octokit::Client.new login: login, password: password
       github.create_authorization(note: 'git-ready',
                                   scopes: ['repo'],
@@ -51,7 +51,7 @@ module InteractiveSetup
       if first_attempt
         Announce.warning 'Found an old token. Replacing it.'
         delete_existing_authorization github, headers
-        generate login, password, headers, false
+        generate login, password, headers, first_attempt: false
       else
         Announce.failure "It looked like you had already issued a token, but deleting it didn't help. You're on your own at this point. You should should use the link at the start to generate a token manually."
       end
