@@ -6,9 +6,7 @@ module Workspace
 
   Contract String => Bool
   def self.git_repository?(path)
-    true if Rugged::Repository.new path
-  rescue Rugged::OSError, Rugged::RepositoryError
-    false
+    Dir.exist? "#{path}/.git"
   end
 
   Contract String, String, String => Any
