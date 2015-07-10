@@ -35,7 +35,7 @@ module InteractiveSetup
 
     Contract None => String
     def self.ask_password
-      password = ask('Enter your GitHub password:') { |c| c.echo = '*' }
+      password = ask('Enter your GitHub password:') { |input| input.echo = '*' }
       password.empty? ? ask_password : password
     end
 
