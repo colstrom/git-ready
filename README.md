@@ -57,7 +57,9 @@ If you would prefer to set up an auth token manually, that is supported too.
 OSX Installation Issues?
 ------------------------
 
-One of the gems used by git-ready ([Rugged](https://github.com/libgit2/rugged)), requires `cmake` to build. On OSX, this isn't installed by default, but can easily be resolved with `brew install cmake`.
+One of the gems used by git-ready ([Rugged](https://github.com/libgit2/rugged)), requires `cmake` and `libgit2` to build. On OSX, this isn't installed by default, but can easily be resolved with `brew install cmake`, `brew install libgit2 --with-libssh2` .
+
+Also, private key has to be registered in keychain in order to repo cloning works.
 
 License
 -------
