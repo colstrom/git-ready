@@ -8,11 +8,11 @@ if ARGV.empty? || %w(-h --help help).include?(ARGV.first)
   abort
 end
 
-organization = ARGV.first
+organization, filter = ARGV.first(2)
 username = GitHub.api.user[:login]
 
 Announce.info "Forking all #{organization} repositories to #{username}"
-repositories = GitHub.fork_all organization
+repositories = GitHub.fork_all organization, filter
 
 Announce.info "Cloning all forked repositories into #{Settings.workspace}"
 Workspace.setup repositories

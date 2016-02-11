@@ -6,9 +6,9 @@ require_relative 'settings'
 module GitHub
   include Contracts
 
-  Contract String => ArrayOf[({ upstream: Sawyer::Resource, origin: Sawyer::Resource })]
-  def self.fork_all(organization)
-    repositories = api.org_repos organization
+  Contract String, String => ArrayOf[({ upstream: Sawyer::Resource, origin: Sawyer::Resource })]
+  def self.fork_all(organization, filter=nil)
+    repositories = api.org_repos(organization).select { |repository| repository.name.include? filter }
     progress = ProgressBar.new repositories.length
     repositories.flat_map do |repository|
       progress.increment!
